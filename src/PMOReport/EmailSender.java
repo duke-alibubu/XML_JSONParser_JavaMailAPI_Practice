@@ -53,7 +53,7 @@ public class EmailSender {
 	         Transport.send(message);
 	         System.out.println("Sent message successfully....");
 	      } catch (MessagingException mex) {
-	         mex.printStackTrace();
+	         System.out.println("Messagin Exception occurred!");
 	      }
 	}
 }
