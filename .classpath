@@ -2,9 +2,11 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="D:/My Folder/Academic/Year 2 Sem 2/CZ3003 Software Systems Analysis &amp; Design/Lab/JavaMail API/javamail-1.4.7/mail.jar"/>
-	<classpathentry kind="lib" path="D:/My Folder/Academic/Year 2 Sem 2/CZ3003 Software Systems Analysis &amp; Design/Lab/JavaMail API/javamail-1.4.7/lib/smtp.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Trinhdung/Downloads/java-json.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Trinhdung/Downloads/json-simple-1.1.jar"/>
+	<classpathentry kind="lib" path="D:/My Folder/Eclipse IDE/Workspace/PMOReport/jars/java-json.jar"/>
+	<classpathentry kind="lib" path="D:/My Folder/Eclipse IDE/Workspace/PMOReport/jars/json-simple-1.1.jar"/>
+	<classpathentry kind="lib" path="D:/My Folder/Eclipse IDE/Workspace/PMOReport/jars/mail.jar"/>
+	<classpathentry kind="lib" path="D:/My Folder/Eclipse IDE/Workspace/PMOReport/jars/smtp.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -47,12 +47,11 @@ public class MainFunction {
 			emailSender.sendEmail("examplepmo@gmail.com", toSent);
 			
 			try {
-				Thread.sleep(30*1000); //repeat once every 30 mins
+				Thread.sleep(30*60*1000); //repeat once every 30 mins
 			}
 			catch (Exception e) {
 				//do nothing
 			}
-		
 		//examplepmo@gmail.com
 		//shireReceive123
 		
