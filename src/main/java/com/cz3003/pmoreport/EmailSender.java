@@ -1,4 +1,4 @@
-package PMOReport;
+package com.cz3003.pmoreport;
 
 import java.util.*;
 import javax.mail.*;

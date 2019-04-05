@@ -1,4 +1,4 @@
-package PMOReport;
+package com.cz3003.pmoreport;
 
 import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
@@ -20,7 +20,7 @@ public class XMLReader {
 	public XMLReader(String filename) {
 		casecount = 0;
 		// TODO Auto-generated method stub
-		xmlFile = new File(filename);	
+		xmlFile = new File(getClass().getClassLoader().getResource(filename).getFile());
 		cases = "";
 	}
 	

@@ -1,4 +1,4 @@
-package PMOReport;
+package com.cz3003.pmoreport;
 
 import java.io.BufferedReader;
 import java.io.IOException;
