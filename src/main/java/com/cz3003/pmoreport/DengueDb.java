@@ -16,7 +16,7 @@ public class DengueDb {
     public DengueDb() {
 
         String host = System.getenv("DB_HOST");
-        if (host != null) {
+        if (host == null) {
             host = "localhost";
         }
         MongoClient client = new MongoClient(host);
