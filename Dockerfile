@@ -1,4 +1,4 @@
-FROM java
+FROM maven
 
 ADD . /app
 
