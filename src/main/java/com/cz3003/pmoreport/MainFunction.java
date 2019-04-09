@@ -94,7 +94,7 @@ public class MainFunction {
 			emailSender.sendEmail("examplepmo@gmail.com", toSent.toString());
 			
 			try {
-				Thread.sleep(30*60*1000); //repeat once every 30 mins
+				Thread.sleep(2*60*1000); //repeat once every 2 mins
 			}
 			catch (Exception e) {
 				//do nothing
