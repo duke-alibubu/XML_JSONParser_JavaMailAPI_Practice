@@ -3,11 +3,11 @@ package com.cz3003.pmoreport;
 import org.bson.Document;
 import java.lang.StringBuilder;
 import java.text.SimpleDateFormat;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class MainFunction {
+
 	public static void main(String[] args) {
 
 		ReportDb reportDb = new ReportDb();
@@ -32,18 +32,17 @@ public class MainFunction {
 				// sw.run();
 				// int total = central.getCasecount()+ ne.getCasecount() + nw.getCasecount() + se.getCasecount()+sw.getCasecount();
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+				sdf.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
 				String date = sdf.format(new Date(System.currentTimeMillis()));
 				toSent.append("PRIME MINISTER OFFICE REPORT FOR " + date + "hrs\n\n\n\n");
 
 
 				List<Document> dengueCases = dengueDb.getDengueCases();
+				Stream<DengueDocument> dengueCasesStream = dengueCases.stream().map(DengueDocument::from).distinct().sorted(Comparator.comparingInt(DengueDocument::getSize));
 				toSent.append("DENGUE REPORT\n");
 				toSent.append("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-				toSent.append("Number of dengue cases: " + dengueCases.stream().map(d -> d.getInteger("caseSize")).reduce(Integer::sum).get().toString() + "\n\n");
-				dengueCases.sort(Comparator.comparingInt(d -> -d.getInteger("caseSize")));
-				for (Document d : dengueCases) {
-					toSent.append(d.getInteger("caseSize") + " cases at " + d.getString("locality") + "\n");
-				}
+				toSent.append("Number of dengue cases: " + dengueCasesStream.map(DengueDocument::getSize).reduce(Integer::sum).get().toString() + "\n\n");
+				dengueCasesStream.forEach(d -> toSent.append(d.getSize() + " cases at " + d.getLocation() + "\n"));
 				toSent.append("\n");
 
 				// toSent.append("Central: " + central.getCasecount() + "\n");
