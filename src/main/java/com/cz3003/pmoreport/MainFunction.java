@@ -4,6 +4,7 @@ import org.bson.Document;
 import java.lang.StringBuilder;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class MainFunction {
@@ -38,11 +39,11 @@ public class MainFunction {
 
 
 				List<Document> dengueCases = dengueDb.getDengueCases();
-				Stream<DengueDocument> dengueCasesStream = dengueCases.stream().map(DengueDocument::from).distinct().sorted(Comparator.comparingInt(DengueDocument::getSize));
+				List<DengueDocument> dengueCasesObj = dengueCases.stream().map(DengueDocument::from).distinct().sorted(Comparator.comparingInt(DengueDocument::getSize)).collect(Collectors.toList());
 				toSent.append("DENGUE REPORT\n");
 				toSent.append("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-				toSent.append("Number of dengue cases: " + dengueCasesStream.map(DengueDocument::getSize).reduce(Integer::sum).get().toString() + "\n\n");
-				dengueCasesStream.forEach(d -> toSent.append(d.getSize() + " cases at " + d.getLocation() + "\n"));
+				toSent.append("Number of dengue cases: " + dengueCasesObj.stream().map(DengueDocument::getSize).reduce(Integer::sum).get().toString() + "\n\n");
+				dengueCasesObj.forEach(d -> toSent.append(d.getSize() + " cases at " + d.getLocation() + "\n"));
 				toSent.append("\n");
 
 				// toSent.append("Central: " + central.getCasecount() + "\n");
@@ -86,6 +87,7 @@ public class MainFunction {
 			}
 			catch (Exception e){
 				//do nothing
+                e.printStackTrace();
 				System.out.println(e.getClass() + " occurred!");
 			}
 			System.out.println(toSent.toString());
